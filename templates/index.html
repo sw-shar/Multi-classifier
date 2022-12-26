@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.split {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+}
+
+.padded {
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.left {
+  left: 0;
+  width: 60%;
+  /*background-color: #999;*/
+}
+
+.right {
+  right: 0;
+  width: 40%;
+  /*background-color: #777;*/
+}
+
+</style>
+        <title>Запрос к базе данных</title>
+</head>
+<body>
+
+<div class="split left">
+<div class="padded">
+        <h1>Работа с базой данных</h1>
+<p>введите свой запрос:</p> 
+        <form method=post>
+	    <input type=text name=query size=40 value="{{ query }}">
+
+            <input type=submit value=Submit>
+        </form>
+	<p>Ваш запрос:{{query}}</p>
+
+	{% if error %}
+       <p>Error: {{error}}</p>
+	{% endif %}
+
+       {% if values %}
+        <p>Мы обнаружили:{{values}}</p>
+
+        {% endif %}
+         {% if marka %}
+         <p>В вашем запросе мы обнаружили: groups {{groups}}, marka {{marka}}, model {{model}}</p>
+        {% endif %}
+
+       <p>Ответ базы данных:</p>
+       <ul>
+        {% if rows %}
+       {% for row in rows %}
+       <li>
+       <p>{{row.name}}: <b>{{row.marka }} {{row.model }} </b>Цена: <b>{{ row.price }}</b></p>
+       <p><img src="{{row.image_url}}" width="300" ></p>
+       </li>
+       {% endfor %}
+       {% else %}
+              <p> К сожалению сейчас на складе такой позиции  нет.</p>
+            <p>  Последняя цена была: <b>152000</b></p>
+         {% endif %}
+       </ul>
+
+</div>
+</div>
+
+<div class="split right">
+<div class="padded">
+
+       <h2>Этот проект создан в рамках диплома магистерской программы ВШЭ</h2>
+<h4>Программа обучения - Машинное обучение и высоконагруженные системы. 2022 год</h4>
+  
+<h3>Combinations of CNN  and Transformers in the multi class classification</h3>
+
+ <p>Работа представляет собой сайт - в котором поcетители могут ввести свой запрос
+и система распознает введенные сущности и формирует ответ на основании базы
+данных.</p> 
+   <p><b>Что под капотом:</b></p>
+      <p>Работа ведется на регулярках + две нейросети, предобученные на синтетическом корпусе данных (400 000 позиций)</p>
+  <p>Происходит обращение к базе и вывод необходимых сущностей. </p>
+  <p>Все обращения, ответы, ошибки и выводы фиксируются в логе</p>
+   <p><b>Практический смысл:</b></p>
+  <br> 
+  <br> 
+   <p><b>Вид запроса:</b></p>
+   <p><i>редуктор в сборе вольво 360</p>
+    <p>гидравлический насос на doosan 225 цена</p>
+    <p>насос экскаватора hyundai r210lc</i></p>
+  
+ 
+  <p><b>Вид базы данных</b></p>
+<table>
+    <tbody>
+    <tr>
+        <td>marka</td>
+        <td>model</td>
+
+      <td>number</td>
+      <td>price</td>
+              <td>group0</td>
+      <td>group1</td>
+      <td>group2</td>
+    </tr>
+    <tr>
+        <td>Doosan</td>
+        <td>dx225</td>
+
+      <td>400914-00212</td>
+      <td>160000</td>
+              <td>насос</td>
+        <td>гидравлический</td>
+      <td>основной</td>
+    </tr>
+          <tr>
+        <td>Hyundai</td>
+        <td>r160lc-7</td>
+
+      <td>31n5-40010</td>
+      <td>210000</td>
+                    <td>редуктор</td>
+        <td>хода</td>
+      <td>в сборе</td>
+    </tr>
+     <tr>
+        <td>Hyundai</td>
+        <td>r160lc-7</td>
+
+      <td>31n5-10011</td>
+      <td>150000</td>
+                    <td>насос</td>
+        <td>гидравлический</td>
+      <td>основной</td>
+    </tr>
+    </tbody>
+</table>
+   <p><b>Технологии использованные в проекте:</b></p> 
+
+   <p>Transformers</p>
+  <p>SQLite</p>
+  <p>Flask</p>
+   <p>Regexp</p>
+ <p> Docker </p>  
+</div>
+</div>
+     
+</body>
+</html> 
+
+

@@ -1,0 +1,15 @@
+flake8
+flask
+gensim
+jinja2
+matplotlib
+numpy
+onnx
+pandas
+scikit-image
+scikit-learn
+seaborn
+torch
+torchvision
+tqdm
+transformers

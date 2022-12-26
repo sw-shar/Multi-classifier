@@ -1,0 +1,7 @@
+.git
+.dockerignore
+__pycache__
+Dockerfile
+Makefile
+tmp
+uploads
