@@ -3,4 +3,5 @@ __pycache__
 tmp
 uploads
 data/model_name
+data/old/
 app-log.csv
